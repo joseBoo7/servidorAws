@@ -1,38 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">SERVIDOR DE DELIA PERALTA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/productos">Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/acercade">Acerca de ...</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div style="text-align:center">
-  <a routerLink="/productos">Productos</a> - 
-  <a routerLink="/acercade">Acerca de ...</a>
-  <div style="border: 1px solid red">
+  <div style="border: 1px solid black">
     <router-outlet></router-outlet>
   </div>
 </div>
-<div>
+<div class="text-center">
   <h1>Administración de artículos</h1>
-    <table border="1" *ngIf="hayRegistros(); else sinproductos">
-      <tr>
-        <td>Codigo</td>
-        <td>Nombre</td>
-        <td>Precio</td>
-        <td>Borrar</td>
-        <td>Seleccionar</td>
-      </tr>
-      <tr *ngFor="let producto of lista">
-        <td>{{producto._id}}</td>
-        <td>{{producto.descripcion}}</td>
-        <td>{{producto.precio}}</td>
-        <td><button (click)="eliminar(producto._id)">Borrar?</button></td>
-        <td><button (click)="mostrar(producto._id)">Seleccionar</button></td>
-      </tr>
-    </table>
-    <ng-template #sinproductos><p>No hay productos</p></ng-template>
-    <div>
-      <h1>Datos</h1>
-      <p>
-        Descripcion:<input type="text" [(ngModel)]="prod.descripcion" />
-      </p>
-      <p>
-        Precio:<input type="number" [(ngModel)]="prod.precio" />
-      </p>            
-      <p><button (click)="nuevo()">Agregar</button>
-      <button (click)="actualizar()">Modificar</button></p>
-    </div>
+  <table class="table" border="1" *ngIf="hayRegistros(); else sinproductos">
+    <tr>
+      <td>Codigo</td>
+      <td>Nombre</td>
+      <td>Precio</td>
+      <td>Borrar</td>
+      <td>Seleccionar</td>
+    </tr>
+    <tr *ngFor="let producto of lista">
+      <td>{{producto._id}}</td>
+      <td>{{producto.descripcion}}</td>
+      <td>{{producto.precio}}</td>
+      <td><button (click)="eliminar(producto._id)">Borrar?</button></td>
+      <td><button (click)="mostrar(producto._id)">Seleccionar</button></td>
+    </tr>
+  </table>
+  <ng-template #sinproductos>
+    <p>No hay productos</p>
+  </ng-template>
+  <div>
+    <h1>Datos</h1>
+    <p>
+      Descripcion:<input type="text" [(ngModel)]="prod.descripcion" />
+    </p>
+    <p>
+      Precio:<input type="number" [(ngModel)]="prod.precio" />
+    </p>
+    <p><button class="btn btn-success" (click)="nuevo()">Agregar</button>
+      <button class="btn btn-warning" (click)="actualizar()">Modificar</button>
+    </p>
+  </div>
 </div>
